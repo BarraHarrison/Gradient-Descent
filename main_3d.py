@@ -14,6 +14,13 @@ y = np.arange(-1, 1, 0.05)
 X, Y = np.meshgrid(x, y)
 Z = z_function(X, Y)
 
+current_position = (0.7, 0.4, z_function(0.7, 0.4))
+learning_rate = 0.01
+
 ax = plt.subplot(projection="3d")
+
+for _ in range(1000):
+    pass
+
 ax.plot_surface(X, Y, Z, cmap="viridis")
 plt.show()
