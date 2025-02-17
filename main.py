@@ -4,15 +4,15 @@ import matplotlib.pyplot as plt
 
 
 def y_function(x):
-    return x ** 2
+    return np.sin(x)
 
 def y_derivative(x):
-    return 2 * x
+    return np.cos(x)
 
-x = np.arange(-100, 100, 0.1)
+x = np.arange(-5, 5, 0.1)
 y = y_function(x)
 
-current_position = (80, y_function(80))
+current_position = (3, y_function(3))
 learning_rate = 0.01
 
 plt.ion()
