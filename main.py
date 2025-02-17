@@ -25,7 +25,7 @@ ax.set_ylabel("y")
 ax.set_title("Gradient Descent Optimization")
 ax.grid()
 
-for _ in range(100):
+for _ in range(1000):
     new_x = current_position[0] - learning_rate * y_derivative(current_position[0])
     new_y = y_function(new_x)
     current_position = (new_x, new_y)
