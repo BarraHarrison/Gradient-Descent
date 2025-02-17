@@ -13,19 +13,26 @@ x = np.arange(-100, 100, 0.1)
 y = y_function(x)
 
 current_position = (80, y_function(80))
-
 learning_rate = 0.01
 
-for _ in range(1000):
+plt.ion()
+fig, ax = plt.subplots()
+ax.plot(x, y, label="y = x²")
+scatter = ax.scatter(current_position[0], current_position[1], color="red", labe="Current Position")
+ax.legend()
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+ax.set_title("Gradient Descent Optimization")
+ax.grid()
+
+for _ in range(100):
     new_x = current_position[0] - learning_rate * y_derivative(current_position[0])
     new_y = y_function(new_x)
     current_position = (new_x, new_y)
 
-plt.plot(x, y, label="y = x²")
-plt.scatter(current_position[0], current_position[1], color="red", label="Final Position")
-plt.legend()
-plt.xlabel("x")
-plt.ylabel("y")
-plt.title("Gradient Descent Optimization")
-plt.grid()
+    scatter.set_offsets([current_position[0], current_position[1]])
+    plt.pause(0.1)
+
+plt.ioff()
 plt.show()
+
