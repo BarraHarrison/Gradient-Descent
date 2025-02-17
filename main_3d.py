@@ -20,7 +20,9 @@ learning_rate = 0.01
 ax = plt.subplot(projection="3d")
 
 for _ in range(1000):
-    pass
+    x_derivative, y_derivative = calculate_gradient(current_position[0], current_position[1])
+    x_new, y_new = current_position[0] - learning_rate * x_derivative, current_position[0] - learning_rate * y_derivative
+    ax.plot_surface(X, Y, Z, cmap="viridis")
+    ax.scatter(current_position[0], current_position[1], current_position[2], color="magenta")
 
-ax.plot_surface(X, Y, Z, cmap="viridis")
-plt.show()
+
