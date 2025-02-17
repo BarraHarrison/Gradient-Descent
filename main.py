@@ -18,7 +18,7 @@ learning_rate = 0.01
 plt.ion()
 fig, ax = plt.subplots()
 ax.plot(x, y, label="y = x²")
-scatter = ax.scatter(current_position[0], current_position[1], color="red", labe="Current Position")
+scatter = ax.scatter(current_position[0], current_position[1], color="red", label="Current Position")
 ax.legend()
 ax.set_xlabel("x")
 ax.set_ylabel("y")
