@@ -12,7 +12,7 @@ def y_derivative(x):
 x = np.arange(-5, 5, 0.1)
 y = y_function(x)
 
-current_position = (3, y_function(3))
+current_position = (1.5, y_function(1.5))
 learning_rate = 0.01
 
 plt.ion()
