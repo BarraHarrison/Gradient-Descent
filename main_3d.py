@@ -17,12 +17,15 @@ Z = z_function(X, Y)
 current_position = (0.7, 0.4, z_function(0.7, 0.4))
 learning_rate = 0.01
 
-ax = plt.subplot(projection="3d")
+ax = plt.subplot(projection="3d", computed_zorder=False)
 
 for _ in range(1000):
     x_derivative, y_derivative = calculate_gradient(current_position[0], current_position[1])
     x_new, y_new = current_position[0] - learning_rate * x_derivative, current_position[0] - learning_rate * y_derivative
-    ax.plot_surface(X, Y, Z, cmap="viridis")
-    ax.scatter(current_position[0], current_position[1], current_position[2], color="magenta")
+    current_position = (x_new, y_new, z_function(x_new, y_new))
+
+    ax.plot_surface(X, Y, Z, cmap="viridis", zorder=0)
+    ax.scatter(current_position[0], current_position[1], current_position[2], color="magenta", zorder=1)
+    plt.show()
 
 
