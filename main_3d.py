@@ -24,10 +24,24 @@ ax = fig.add_subplot(111, projection="3d", computed_zorder=False)
 ax.plot_surface(X, Y, Z, cmap="viridis", alpha=0.8, zorder=0)
 scatter = ax.scatter(current_position[0], current_position[1], current_position[2], color="magenta", s=100, zorder=1)
 
+ax.set_xlabel("X-axis")
+ax.set_ylabel("Y-axis")
+ax.set_zlabel("Z-axis")
+ax.set_title("3D Gradient Descent Visualization")
+
 for _ in range(1000):
     x_derivative, y_derivative = calculate_gradient(current_position[0], current_position[1])
-    x_new, y_new = current_position[0] - learning_rate * x_derivative, current_position[0] - learning_rate * y_derivative
-    current_position = (x_new, y_new, z_function(x_new, y_new))
+    x_new = current_position[0] - learning_rate * x_derivative
+    y_new = current_position[1] - learning_rate * y_derivative
+    z_new = z_function(x_new, y_new)
 
+    current_position = (x_new, y_new, z_new)
+
+    scatter.remove()
+    scatter = ax.scatter(x_new, y_new, z_new, color="magenta", s=100, zorder=1)
+    plt.pause(0.1)
+
+plt.ioff()
+plt.show()
 
 
